@@ -16,10 +16,27 @@
   "main": "index.js",
   "scripts": {
     "dev": "node ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format:fix": "npx prettier . --write",
+    "format:check": "npx prettier . --check",
+    "lint:fix": "npx eslint . --fix",
+    "lint:check": "npx eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*ts": [
+      "npm run lint:fix",
+      "npm run format:fix"
+    ]
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^25.2.3",
-    "typescript": "^5.9.3"
+    "eslint": "^10.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0"
   }
 }
